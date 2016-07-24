@@ -1,5 +1,5 @@
-var TestService = require('./services/TestService').TestService;
-var UserController = require('./controllers/UserController');
+var TestService = require('./service/TestService').TestService;
+var UserController = require('./controller/UserController');
 
 var ApiList = {
     '/v1/test':                                [TestService.test, 'name'],

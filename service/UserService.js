@@ -2,8 +2,8 @@
  * Created by whis on 7/21/16.
  */
 var Core = require('../lib/core');
-var UserProxy = require('../models/user');
-var TokenProxy = require('../models/token');
+var UserProxy = require('./user');
+var TokenProxy = require('./token');
 var TokenService = require('./TokenService');
 var Q = require('q');
 var Util = require('../lib/util');
