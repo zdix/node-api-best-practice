@@ -2,10 +2,10 @@
  * Created by dd on 7/25/16.
  */
 var mongoose = require('mongoose');
-var mongo = require('./../../lib/mongo');
+var Mongo = require('./../../lib/mongo');
 var Schema = mongoose.Schema;
 
-mongo.init(mongoose);
+Mongo.init(mongoose);
 
 var UserSchema = new Schema({
     phone: Number,

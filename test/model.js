@@ -14,13 +14,17 @@ function save() {
 }
 
 function query() {
-    User.find().exec(function () {
-        console.log(arguments);
-    });
+    // User.find().exec(function (error, doc) {
+    //     console.log(arguments);
+    // });
+
+    // User.find().exec(() => {
+    //     console.log(arguments);
+    // });
 
     User.find({name: 'dd'}).exec().then((doc) => {
         console.log(doc);
-    })
+    });
 }
 
 query();
