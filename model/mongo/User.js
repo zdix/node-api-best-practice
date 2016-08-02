@@ -17,4 +17,12 @@ var UserSchema = new Schema({
 
 var User = mongoose.model('user', UserSchema);
 
+User.basicAttributes = ['name', 'phone'];
+User.detailAttributes = ['name', 'phone', 'address'];
+
+User.processModel = model => {
+    model['hello'] = 'world';
+    return model;
+};
+
 module.exports = User;
