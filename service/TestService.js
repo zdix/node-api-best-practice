@@ -9,10 +9,6 @@ function test(context) {
     context.finish({ arg: _.slice(arguments, 1) });
 }
 
-function formatModelList(modelList) {
-
-}
-
 var TestService = {
     test: test
 };

@@ -3,6 +3,8 @@
  */
 var User = require('../model/mongo/user');
 
+var Core = require('../lib/core');
+
 function save() {
     var user = new User();
     user.phone = 1;
@@ -23,7 +25,12 @@ function query() {
     // });
 
     User.find({name: 'dd'}).exec().then((doc) => {
-        console.log(doc);
+        var modelList = Core.Util.formatModelList(doc, (model) => {
+            model['hello'] = 'world';
+            return model;
+        }, ['name', 'phone']);
+
+        console.log(modelList);
     });
 }
 
