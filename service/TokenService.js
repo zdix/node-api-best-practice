@@ -4,7 +4,7 @@
 const UUID = require('node-uuid');
 
 var Core = require('../lib/core');
-var TokenProxy = require('./token');
+var TokenProxy = require('../model/mongo/token');
 
 function makeToken(userId) {
     var token = UUID.v1();

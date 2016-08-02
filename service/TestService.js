@@ -1,10 +1,16 @@
 /**
  * Created by whis on 7/21/16.
  */
-// var Core = require('../lib/core').Core;
+var Core = require('../lib/core');
 
-function test(context, name) {
-    console.log(name);
+var _ = require('lodash');
+
+function test(context) {
+    context.finish({ arg: _.slice(arguments, 1) });
+}
+
+function formatModelList(modelList) {
+
 }
 
 var TestService = {

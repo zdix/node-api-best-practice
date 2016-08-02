@@ -2,8 +2,8 @@
  * Created by whis on 7/21/16.
  */
 var Core = require('../lib/core');
-var UserProxy = require('./user');
-var TokenProxy = require('./token');
+var User = require('../model/mongo/user');
+var Token = require('../model/mongo/token');
 var TokenService = require('./TokenService');
 var Q = require('q');
 var Util = require('../lib/util');
@@ -12,17 +12,17 @@ var Const = require('../lib/const');
 function login(username, password) {
     var query = {
         mobile: username.toString(),
-        password: Util.encryptMD5(password.toString()),
+        password: Util.md5(password.toString()),
         status: {$ne: -1}
     };
     var userModel;
-    return UserProxy.getOneByQuery(query, {}, {})
+    return User.getOneByQuery(query, {}, {})
         .then((user) => {
             if (!user) {
                 return Q.reject(Util.makeError(Const.ERROR.ERROR_NOT_EXIST, 'user not exists'));
             }
             user.last_login_time = new Date();
-            return UserProxy.save(user); //修改最近登录时间
+            return User.save(user); //修改最近登录时间
         })
         .then((user) => {
             user = user._doc;
@@ -47,7 +47,7 @@ function login(username, password) {
 function register(username, password, code) {
 console.log(username, password);
     var userData;
-    UserProxy.getOneByQuery({mobile: username}, {}, {})
+    User.getOneByQuery({mobile: username}, {}, {})
         .then((user) => {
             if (user) {
                 return Q.reject(Util.makeError(Const.ERROR.ERROR_ALREADY_EXISTS, 'the phone number has been registered, please try to login'));
@@ -56,14 +56,14 @@ console.log(username, password);
                 mobile: username,
                 nickname: username,
                 type: 1,
-                password: Util.encryptMD5(password.toString()),
+                password: Util.md5(password.toString()),
                 create_timeStamp: new Date().getTime()
             };
             console.log(userModel);
             console.log('123123');
 
 
-            return UserProxy.save(userModel);
+            return User.save(userModel);
         })
         .then((user) => {
 
@@ -86,11 +86,11 @@ function getUserByToken(token) {
     var query = {
         token: token
     };
-    return TokenProxy.getOneByQuery(query, "user_id", {})
+    return Token.getOneByQuery(query, "user_id", {})
         .then((data) => {
             var userId = data.user_id;
 
-            return UserProxy.findById(userId).then((user) => {
+            return User.findById(userId).then((user) => {
                 return user;
             });
         })

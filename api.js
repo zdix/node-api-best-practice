@@ -1,8 +1,13 @@
 var TestService = require('./service/TestService').TestService;
 var UserController = require('./controller/UserController');
 
+/**
+ * ~ 开头表示无需验证token
+ */
+
 var ApiList = {
-    '/v1/test':                                [TestService.test, 'name'],
+    '~/v1/t1':                                  [TestService.test, 'name, dd'],
+    '~/v1/t2':                                  [TestService.test, 'name, name', 'phone, phone', 'address, address'],
 
     /*============================================================
      User相关Api

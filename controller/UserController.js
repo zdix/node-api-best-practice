@@ -1,7 +1,7 @@
 /**
  * Created by whis on 7/21/16.
  */
-var UserService = require('./UserService');
+var UserService = require('../service/UserService');
 
 function login(context, username, password) {
 
