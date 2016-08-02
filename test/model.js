@@ -24,13 +24,15 @@ function query() {
     //     console.log(arguments);
     // });
 
-    User.find({name: 'dd'}).exec().then((doc) => {
+    User.find({name: 'dd'}).exec().then((docs) => {
         // var modelList = Core.Util.formatModelList(doc, (model) => {
         //     model['hello'] = 'world';
         //     return model;
         // }, ['name', 'phone']);
 
-        var modelList = Core.Util.formatModelList(doc, User.processModel, User.basicAttributes);
+        console.log(docs);
+
+        var modelList = Core.Util.formatModelList(docs, User.processModel, User.basicAttributes);
 
         console.log(modelList);
     });
