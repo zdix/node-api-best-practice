@@ -30,11 +30,13 @@ function query() {
         //     return model;
         // }, ['name', 'phone']);
 
-        console.log(docs);
+        // console.log(docs);
 
-        var modelList = Core.Util.formatModelList(docs, User.processModel, User.basicAttributes);
+        Core.Util.formatModelList(docs, User.processModel, User.basicAttributes).then(modelList => {
+            console.log(modelList);
+        });
 
-        console.log(modelList);
+
     });
 }
 
