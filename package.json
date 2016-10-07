@@ -1,18 +1,19 @@
 {
-  "name": "node-api-best-practice",
+  "name": "node-api-base",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "ioredis": "^2.4.0",
     "locutus": "^2.0.5",
-    "lodash": "^4.16.3",
+    "lodash": "^4.16.4",
     "moment": "^2.15.1",
-    "mongoose": "^4.6.2",
     "node-uuid": "^1.4.7",
     "winston": "^2.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mongoose": "^4.6.3"
+  },
   "scripts": {}
 }
