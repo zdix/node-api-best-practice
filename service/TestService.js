@@ -33,4 +33,4 @@ var TestService = {
     test: test
 };
 
-exports.TestService = TestService;
+module.exports = TestService;

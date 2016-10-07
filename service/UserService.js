@@ -1,11 +1,9 @@
 /**
  * Created by whis on 7/21/16.
  */
-var Core = require('../lib/core');
 var User = require('../model/mongo/user');
 var Token = require('../model/mongo/token');
 var TokenService = require('./TokenService');
-var Q = require('q');
 var Util = require('../lib/util');
 var Const = require('../lib/const');
 
@@ -19,7 +17,7 @@ function login(username, password) {
     return User.getOneByQuery(query, {}, {})
         .then((user) => {
             if (!user) {
-                return Q.reject(Util.makeError(Const.ERROR.ERROR_NOT_EXIST, 'user not exists'));
+                return Promise.reject(Util.makeError(Const.ERROR.ERROR_NOT_EXIST, 'user not exists'));
             }
             user.last_login_time = new Date();
             return User.save(user); //修改最近登录时间
@@ -50,7 +48,7 @@ console.log(username, password);
     User.getOneByQuery({mobile: username}, {}, {})
         .then((user) => {
             if (user) {
-                return Q.reject(Util.makeError(Const.ERROR.ERROR_ALREADY_EXISTS, 'the phone number has been registered, please try to login'));
+                return Promise.reject(Util.makeError(Const.ERROR.ERROR_ALREADY_EXISTS, 'the phone number has been registered, please try to login'));
             }
             var userModel = {
                 mobile: username,

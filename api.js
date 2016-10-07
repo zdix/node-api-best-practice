@@ -1,4 +1,4 @@
-var TestService = require('./service/TestService').TestService;
+var TestService = require('./service/TestService');
 var UserController = require('./controller/UserController');
 
 /**

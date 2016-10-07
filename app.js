@@ -1,9 +1,9 @@
-const Q = require('q');
-const PHPJS = require('phpjs');
 const Log = require('./lib/log');
 const Core = require('./lib/core');
 const ActionMap = require('./api');
 const Const = require('./lib/const');
+
+const UserService = require('./service/UserService');
 
 var express = require('express');
 var app = express();
@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-Core.installAction(router, ActionMap);
+Core.install(router, ActionMap, UserService.getUserByToken);
 
 app.use(router);
 app.use(Core.errorHandler);
