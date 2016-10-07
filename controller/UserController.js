@@ -4,7 +4,6 @@
 var UserService = require('../service/UserService');
 
 function login(context, username, password) {
-
     UserService.login(username, password).then((data) => {
         var token = data.token;
         var user = data.user;

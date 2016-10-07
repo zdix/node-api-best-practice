@@ -2,6 +2,9 @@ const Log = require('./lib/log');
 const Core = require('./lib/core');
 const ActionMap = require('./api');
 const Const = require('./lib/const');
+const Config = require('./config');
+
+Config.LOG_LEVEL = 'info';
 
 const UserService = require('./service/UserService');
 
