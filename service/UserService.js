@@ -17,7 +17,7 @@ function login(username, password) {
     return User.getOneByQuery(query, {}, {})
         .then((user) => {
             if (!user) {
-                return Promise.reject(Util.makeError(Const.ERROR.ERROR_NOT_EXIST, 'user not exists'));
+                return Promise.reject(Util.makeError(Const.ERROR.ERROR_NOT_EXISTS, 'user not exists'));
             }
             user.last_login_time = new Date();
             return User.save(user); //修改最近登录时间
